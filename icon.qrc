@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/Add.png</file>
+        <file>icon/Cancel.png</file>
+        <file>icon/Check.png</file>
+        <file>icon/Copy.png</file>
+        <file>icon/Cut.png</file>
+        <file>icon/Delete.png</file>
+        <file>icon/Folder.png</file>
+        <file>icon/Log Out.png</file>
+        <file>icon/Next.png</file>
+        <file>icon/Pause.png</file>
+        <file>icon/Play.png</file>
+        <file>icon/Save.png</file>
+        <file>icon/Search.png</file>
+        <file>icon/Settings.png</file>
+    </qresource>
+</RCC>
