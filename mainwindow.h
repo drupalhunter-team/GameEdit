@@ -22,6 +22,8 @@ public:
     ~MainWindow();
 
     bool addSprite(QString &file);
+    bool addButton();
+
 private:
     Ui::MainWindow *ui;
     QTreeWidget *fileTreeWidget;
@@ -39,6 +41,7 @@ private:
 private slots:
     bool saveIniFile();
     bool actionAddSprite();
+    bool actionAddButton();
 };
 
 #endif // MAINWINDOW_H

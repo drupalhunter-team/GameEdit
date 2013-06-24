@@ -6,6 +6,8 @@
 
 #include <QFileDialog>
 #include "gameimage.h"
+#include "gamebutton.h"
+
 #include <QAction>
 #include <QGraphicsView>
 #include "gamepaintwindow.h"
@@ -27,8 +29,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QAction *actionAddImage = new QAction(QString("添加图片"), this);
     ui->mainToolBar->addAction(actionAddImage);
+    QAction *actionAddButton = new QAction(QString("添加按钮"), this);
+    ui->mainToolBar->addAction(actionAddButton);
 
     connect( actionAddImage, SIGNAL(triggered()), this, SLOT(actionAddSprite()));
+    connect( actionAddButton, SIGNAL(triggered()), this, SLOT(actionAddButton()));
 
     scene = new GamePaintWindow(QSize(960, 640));
     ui->graphicsView->setScene(scene);
@@ -52,12 +57,27 @@ bool MainWindow::actionAddSprite()
      }
     return false;
 }
+bool MainWindow::actionAddButton()
+{
+    addButton();
+    return false;
+}
 
 bool MainWindow::addSprite(QString &file)
 {
     GameImage *image = new GameImage(file);
     if(image){
         scene->addItem(image);
+        return true;
+    }
+
+    return false;
+}
+bool MainWindow::addButton()
+{
+    GameButton *btn = new GameButton();
+    if(btn){
+        scene->addItem(btn);
         return true;
     }
 

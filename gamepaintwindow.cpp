@@ -1,4 +1,5 @@
 #include "gamepaintwindow.h"
+#include <QGraphicsItemGroup>
 
 GamePaintWindow::GamePaintWindow(QSize winSize, QObject *parent) :
     QGraphicsScene(parent)

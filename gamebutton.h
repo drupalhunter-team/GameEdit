@@ -1,18 +1,13 @@
 #ifndef GAMEBUTTON_H
 #define GAMEBUTTON_H
 
-#include <QObject>
+#include <QGraphicsItemGroup>
 
-class GameButton : public QObject
+class GameButton : public QGraphicsItemGroup
 {
-    Q_OBJECT
 public:
-    explicit GameButton(QObject *parent = 0);
-    
-signals:
-    
-public slots:
-    
+    GameButton();
+
 };
 
 #endif // GAMEBUTTON_H
