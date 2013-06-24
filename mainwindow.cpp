@@ -6,14 +6,15 @@
 
 #include <QFileDialog>
 #include "gameimage.h"
+#include <QAction>
+#include <QGraphicsView>
+#include "gamepaintwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    //initFileList();
 
 //    QTabWidget *tabWidget = new QTabWidget(this);
 //    this->setCentralWidget(tabWidget);
@@ -24,15 +25,13 @@ MainWindow::MainWindow(QWidget *parent) :
 //    QWidget * unitsWidget = new QWidget(tabWidget);
 //    tabWidget->addTab(unitsWidget, QString("单位"));
 
-    connect( ui->actionSetting, SIGNAL(triggered()), this, SLOT(actionAddSprite()));
+    QAction *actionAddImage = new QAction(QString("添加图片"), this);
+    ui->mainToolBar->addAction(actionAddImage);
 
-    scene = new QGraphicsScene();
-    view = new QGraphicsView(scene);
-    this->setCentralWidget(view);
+    connect( actionAddImage, SIGNAL(triggered()), this, SLOT(actionAddSprite()));
 
-    scene->addLine(QLine(960/2,0,960/2,640));
-    scene->addLine(QLine(0,640/2,960,640/2));
-    //scene->addText("HelloWorld");
+    scene = new GamePaintWindow(QSize(960, 640));
+    ui->graphicsView->setScene(scene);
 
 }
 
@@ -71,8 +70,6 @@ bool MainWindow::saveIniFile()
 //   // ConfigIni->writeEntry(QString::fromUtf8("/config./opt/参数1"), QString::fromUtf8("中文"));
 //    ConfigIni->setValue("node1", "this is value");
 //    delete ConfigIni;
-
-
 //    qDebug() <<"save";
     return true;
 }

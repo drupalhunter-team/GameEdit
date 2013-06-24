@@ -6,20 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
-    <height>464</height>
+    <width>702</width>
+    <height>511</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QGraphicsView" name="graphicsView"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>720</width>
+     <width>702</width>
      <height>22</height>
     </rect>
    </property>
@@ -31,28 +40,10 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionSetting"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionSetting">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icon.qrc">
-     <normaloff>:/icon/Settings.png</normaloff>:/icon/Settings.png</iconset>
-   </property>
-   <property name="text">
-    <string>setting</string>
-   </property>
-   <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;设置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="icon.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

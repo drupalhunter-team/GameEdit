@@ -5,9 +5,8 @@
 
 #include "Prefix.h"
 #include "config.h"
-#include <QGraphicsScene>
-#include <QGraphicsView>
-#include <QGraphicsPixmapItem>
+
+#include "gamepaintwindow.h"
 
 
 namespace Ui {
@@ -35,8 +34,7 @@ private:
 
     bool loadIniFile();
 
-    QGraphicsScene *scene;
-    QGraphicsView *view;
+    GamePaintWindow *scene;
 
 private slots:
     bool saveIniFile();
