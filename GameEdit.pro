@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     DLFile.c \
     gameimage.cpp \
     gamebutton.cpp \
-    gamepaintwindow.cpp
+    gamepaintwindow.cpp \
+    gamesprite.cpp
 
 HEADERS  += mainwindow.h \
     globaldata.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     Prefix.h \
     gameimage.h \
     gamebutton.h \
-    gamepaintwindow.h
+    gamepaintwindow.h \
+    gamesprite.h
 
 FORMS    += mainwindow.ui
 

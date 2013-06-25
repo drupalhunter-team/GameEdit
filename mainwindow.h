@@ -21,6 +21,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    bool addImage(QString &file);
     bool addSprite(QString &file);
     bool addButton();
 
@@ -40,6 +41,7 @@ private:
 
 private slots:
     bool saveIniFile();
+    bool actionAddImage();
     bool actionAddSprite();
     bool actionAddButton();
 };

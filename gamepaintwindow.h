@@ -8,11 +8,12 @@ class GamePaintWindow : public QGraphicsScene
     Q_OBJECT
 public:
     GamePaintWindow( QSize winSize, QObject *parent = 0);
-    
+    ~GamePaintWindow();
 signals:
     
 public slots:
     
+private:
 };
 
 #endif // GAMEPAINTWINDOW_H

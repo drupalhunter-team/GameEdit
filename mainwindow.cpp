@@ -5,12 +5,15 @@
 #include "qstringlistmodel.h"
 
 #include <QFileDialog>
-#include "gameimage.h"
-#include "gamebutton.h"
-
 #include <QAction>
 #include <QGraphicsView>
 #include "gamepaintwindow.h"
+#include <QMessageBox>
+
+#include "gameimage.h"
+#include "gamebutton.h"
+#include "gamesprite.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,8 +34,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mainToolBar->addAction(actionAddImage);
     QAction *actionAddButton = new QAction(QString("添加按钮"), this);
     ui->mainToolBar->addAction(actionAddButton);
+    QAction *actionAddSprite = new QAction(QString("添加精灵"), this);
+    ui->mainToolBar->addAction(actionAddSprite);
 
-    connect( actionAddImage, SIGNAL(triggered()), this, SLOT(actionAddSprite()));
+    connect( actionAddImage, SIGNAL(triggered()), this, SLOT(actionAddImage()));
+    connect( actionAddSprite, SIGNAL(triggered()), this, SLOT(actionAddSprite()));
     connect( actionAddButton, SIGNAL(triggered()), this, SLOT(actionAddButton()));
 
     scene = new GamePaintWindow(QSize(960, 640));
@@ -45,12 +51,24 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-bool MainWindow::actionAddSprite()
+bool MainWindow::actionAddImage()
 {
     QString path = QFileDialog::getOpenFileName(this,
                                                    tr("Add Image"),
                                                     QDir::currentPath(),
                                                    tr("PNG Files(*.png)"));
+    if(!path.isEmpty()) {
+        addImage(path);
+        return true;
+     }
+    return false;
+}
+bool MainWindow::actionAddSprite()
+{
+    QString path = QFileDialog::getOpenFileName(this,
+                                                   tr("Add Sprite"),
+                                                    QDir::currentPath(),
+                                                   tr("BIN Files(*.bin)"));
     if(!path.isEmpty()) {
         addSprite(path);
         return true;
@@ -63,7 +81,7 @@ bool MainWindow::actionAddButton()
     return false;
 }
 
-bool MainWindow::addSprite(QString &file)
+bool MainWindow::addImage(QString &file)
 {
     GameImage *image = new GameImage(file);
     if(image){
@@ -71,6 +89,16 @@ bool MainWindow::addSprite(QString &file)
         return true;
     }
 
+    return false;
+}
+bool MainWindow::addSprite(QString &file)
+{
+    qDebug()<<file;
+    GameSprite *sprite = new GameSprite(file);
+    if(sprite){
+        scene->addItem(sprite);
+        return true;
+    }
     return false;
 }
 bool MainWindow::addButton()
